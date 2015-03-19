@@ -38,6 +38,7 @@
 #include "stm32f10x_type.h"
 #include "cortexm3_macro.h"
 #include "usb.h"
+#include "dfu.h"
 
 typedef void (*FuncPtr)(void);
 

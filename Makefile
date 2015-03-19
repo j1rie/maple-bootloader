@@ -17,13 +17,18 @@ ST_LIB = stm32_lib
 ST_USB = usb_lib
 
 # Optimization level [0,1,2,3,s]
+ifdef Small
+CFLAGS = -DSmall
+OPT = s
+else
 OPT ?= 0
+endif
 DEBUG = 
 #DEBUG = dwarf-2
 
 INCDIRS = ./$(ST_LIB) ./$(ST_USB)
 
-CFLAGS = $(DEBUG)
+CFLAGS += $(DEBUG)
 CFLAGS += -O$(OPT)
 CFLAGS += -ffunction-sections -fdata-sections
 CFLAGS += -Wall -Wimplicit

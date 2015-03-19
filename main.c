@@ -38,20 +38,32 @@ int main() {
     setupCLK();
     setupLED();
     setupUSB();
+#ifndef NoButton
     setupBUTTON();
+#endif
     setupFLASH();
 
     strobePin(LED_BANK, LED, STARTUP_BLINKS, BLINK_FAST);
+#ifdef LEDx2
+    strobePin(LED2_BANK, LED2, STARTUP_BLINKS, BLINK_FAST);    
+#endif
 
     /* wait for host to upload program or halt bootloader */
+#ifdef NoButton
+    bool no_user_jump = !checkUserCode(USER_CODE_FLASH) && !checkUserCode(USER_CODE_RAM);
+#else    
     bool no_user_jump = !checkUserCode(USER_CODE_FLASH) && !checkUserCode(USER_CODE_RAM) || readPin(BUTTON_BANK, BUTTON);
+#endif
     int delay_count = 0;
 
     while ((delay_count++ < BOOTLOADER_WAIT)
             || no_user_jump) {
 
         strobePin(LED_BANK, LED, 1, BLINK_SLOW);
+#ifdef LEDx2
+        strobePin(LED2_BANK, LED2, 1, BLINK_SLOW);        
 
+#endif
         if (dfuUploadStarted()) {
             dfuFinishUpload(); // systemHardReset from DFU once done
         }
@@ -64,6 +76,9 @@ int main() {
     } else {
         // some sort of fault occurred, hard reset
         strobePin(LED_BANK, LED, 5, BLINK_FAST);
+#ifdef LEDx2
+        strobePin(LED2_BANK, LED2, 5, BLINK_FAST);        
+#endif
         systemHardReset();
     }
 

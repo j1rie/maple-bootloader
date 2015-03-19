@@ -35,6 +35,10 @@
 #define GPIOA ((u32)0x40010800)
 #define GPIOB ((u32)0x40010C00)
 #define GPIOC ((u32)0x40011000)
+#define AFIO  ((u32)0x40010000)
+#define AFIO_MAPR (AFIO + 0x04)
+#define AFIO_MAPR_SWJ_CFG (0x7<<24)
+#define AFIO_MAPR_SWJ_CFG_DISABLE (0x4<<24)
 
 #define RCC_CR      RCC
 #define RCC_CFGR    (RCC + 0x04)
@@ -46,6 +50,7 @@
 #define RCC_APB2ENR_GPIOB 0x00000008
 #define RCC_APB2ENR_GPIOC 0x00000010
 #define RCC_APB1ENR_USB 0x00800000
+#define RCC_APB2ENR_AFIOEN 0x00000001
 
 #define FLASH_ACR     (FLASH + 0x00)
 #define FLASH_KEYR    (FLASH + 0x04)

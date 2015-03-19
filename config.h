@@ -61,6 +61,52 @@
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define USB_DISC      9
 
+#elif defined Blue
+
+# define LED_BANK GPIOA
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define LED      9
+# define LED2_BANK GPIOA
+# define LED2_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define LED2      14
+# define REMAP
+# define PullDown
+# define Small
+# define LEDx2
+# define NoButton
+# define USB_DISC_BANK GPIOB
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define USB_DISC      13
+
+#elif defined Dev
+
+# define LED_BANK GPIOB
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define LED      13
+# define PullDown
+# define Small
+# define NoButton
+# define USB_DISC_BANK GPIOB
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define USB_DISC      15
+
+#elif defined Red
+
+# define LED_BANK GPIOA
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define LED      9
+# define LED2_BANK GPIOB
+# define LED2_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define LED2      13
+# define REMAP
+# define PullDown
+# define Small
+# define LEDx2
+# define NoButton
+# define USB_DISC_BANK GPIOA
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define USB_DISC      13
+
 #else
 # error "Unknown platform"
 #endif
@@ -73,7 +119,11 @@
 
 #define USER_CODE_RAM     ((u32)0x20000C00)
 #define RAM_END           ((u32)0x20005000)
+#ifdef Small
+#define USER_CODE_FLASH   ((u32)0x08002000)
+#else
 #define USER_CODE_FLASH   ((u32)0x08005000)
+#endif
 #define FLASH_END         ((u32)0x08020000)
 
 #define VEND_ID0 0xAF

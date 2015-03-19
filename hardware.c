@@ -101,7 +101,24 @@ void setupLED(void) {
     /* Setup APB2 for LED GPIO bank */
     rwmVal =  GET_REG(RCC_APB2ENR);
     rwmVal |= LED_RCC_APB2ENR_GPIO;
+#ifdef REMAP    
+    rwmVal |= RCC_APB2ENR_AFIOEN; /* enable AFIO clock */
+#endif    
     SET_REG(RCC_APB2ENR, rwmVal);
+    
+#ifdef REMAP
+    /* disable SWJ */
+    rwmVal =  GET_REG(AFIO_MAPR);
+    rwmVal &= ~AFIO_MAPR_SWJ_CFG;
+    rwmVal |= AFIO_MAPR_SWJ_CFG_DISABLE;
+    SET_REG(AFIO_MAPR, rwmVal);
+#endif        
+#ifdef LEDx2
+    /* Setup APB2 for LED2 GPIO bank */
+    rwmVal =  GET_REG(RCC_APB2ENR);
+    rwmVal |= LED2_RCC_APB2ENR_GPIO;
+    SET_REG(RCC_APB2ENR, rwmVal);
+#endif
 
 #if (LED < 8)
 # define LED_GPIO_CR GPIO_CRL(LED_BANK)
@@ -111,6 +128,16 @@ void setupLED(void) {
 # define LED_CR_PORT (LED - 8)
 #endif
 
+#ifdef LEDx2
+#if (LED2 < 8)
+# define LED2_GPIO_CR GPIO_CRL(LED2_BANK)
+# define LED2_CR_PORT (LED2)
+#else
+# define LED2_GPIO_CR GPIO_CRH(LED2_BANK)
+# define LED2_CR_PORT (LED2 - 8)
+#endif
+#endif
+
     /* Setup GPIO Pin as PP Out */
     rwmVal =  GET_REG(LED_GPIO_CR);
     rwmVal &= ~(0xF << (LED_CR_PORT * 4));
@@ -118,9 +145,20 @@ void setupLED(void) {
     SET_REG(LED_GPIO_CR, rwmVal);
 
     setPin(LED_BANK, LED);
+    
+#ifdef LEDx2
+    /* Setup GPIO Pin as PP Out */
+    rwmVal =  GET_REG(LED2_GPIO_CR);
+    rwmVal &= ~(0xF << (LED2_CR_PORT * 4));
+    rwmVal |= (0x1 << (LED2_CR_PORT * 4));
+    SET_REG(LED2_GPIO_CR, rwmVal);
+
+    setPin(LED2_BANK, LED2);    
+#endif
 }
 
 void setupBUTTON(void) {
+#ifndef NoButton
     u32 rwmVal; /* read-write-modify place holder var */
 
     /* Setup APB2 for button GPIO bank */
@@ -141,6 +179,7 @@ void setupBUTTON(void) {
     rwmVal &= ~(0xF << (BUTTON_CR_PORT * 4));
     rwmVal |= (0x4 << (BUTTON_CR_PORT * 4));
     SET_REG(BUTTON_GPIO_CR, rwmVal);
+#endif
 }
 
 void setupFLASH() {
@@ -177,7 +216,11 @@ void jumpToUser(u32 usrAddr) {
     flashLock();
     usbDsbISR();
     nvicDisableInterrupts();
+#ifdef PullDown
+    resetPin(USB_DISC_BANK, USB_DISC); // disconnect usb from host
+#else
     setPin(USB_DISC_BANK, USB_DISC); // disconnect usb from host
+#endif
     systemReset(); // resets clocks and periphs, not core regs
 
 

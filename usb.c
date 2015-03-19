@@ -50,7 +50,9 @@ void setupUSB(void) {
 #endif
 
     /* preset pin to high */
+#ifndef PullDown
     setPin(USB_DISC_BANK, USB_DISC);
+#endif
 
     /* Setup GPIO Pin as OD out */
     rwmVal  = GET_REG(USB_DISC_GPIO_CR);
@@ -62,7 +64,11 @@ void setupUSB(void) {
     pRCC->APB1ENR |= RCC_APB1ENR_USB;
 
     /* initialize the usb application */
+#ifdef PullDown
+    setPin(USB_DISC_BANK, USB_DISC);  /* present ourselves to the host */
+#else
     resetPin(USB_DISC_BANK, USB_DISC);  /* present ourselves to the host */
+#endif
     usbAppInit();
 }
 
