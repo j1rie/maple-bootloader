@@ -1,8 +1,11 @@
 Bootloader for IRMP_STM32 devices
 
-For the developer board compile with make PLATFORM=Dev Small=1,
-for the red ST-Link emulator compile with make PLATFORM=Red Small=1
-and for the blue ST-Link emulator compile with make PLATFORM=Blue Small=1.
+For the developer board compile with make PLATFORM=Dev,
+for the red ST-Link emulator compile with make PLATFORM=Red
+and for the blue ST-Link emulator compile with make PLATFORM=Blue.
+
+If you want to compile with -O0, use 'make OPT=0'.
+
 
 FILES -------------------------------------------------------------------------
 
