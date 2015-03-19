@@ -71,7 +71,6 @@
 # define LED2      14
 # define REMAP
 # define PullDown
-# define Small
 # define LEDx2
 # define NoButton
 # define USB_DISC_BANK GPIOB
@@ -84,7 +83,6 @@
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      13
 # define PullDown
-# define Small
 # define NoButton
 # define USB_DISC_BANK GPIOB
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
@@ -100,7 +98,6 @@
 # define LED2      13
 # define REMAP
 # define PullDown
-# define Small
 # define LEDx2
 # define NoButton
 # define USB_DISC_BANK GPIOA
@@ -119,7 +116,7 @@
 
 #define USER_CODE_RAM     ((u32)0x20000C00)
 #define RAM_END           ((u32)0x20005000)
-#ifdef Small
+#ifndef UCF5k
 #define USER_CODE_FLASH   ((u32)0x08002000)
 #else
 #define USER_CODE_FLASH   ((u32)0x08005000)
