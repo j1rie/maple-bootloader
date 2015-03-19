@@ -62,8 +62,8 @@ int main() {
         strobePin(LED_BANK, LED, 1, BLINK_SLOW);
 #ifdef LEDx2
         strobePin(LED2_BANK, LED2, 1, BLINK_SLOW);        
-
 #endif
+
         if (dfuUploadStarted()) {
             dfuFinishUpload(); // systemHardReset from DFU once done
         }

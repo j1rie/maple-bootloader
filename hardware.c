@@ -113,6 +113,7 @@ void setupLED(void) {
     rwmVal |= AFIO_MAPR_SWJ_CFG_DISABLE;
     SET_REG(AFIO_MAPR, rwmVal);
 #endif        
+
 #ifdef LEDx2
     /* Setup APB2 for LED2 GPIO bank */
     rwmVal =  GET_REG(RCC_APB2ENR);
