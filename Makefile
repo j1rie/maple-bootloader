@@ -35,10 +35,10 @@ CFLAGS += -Wpointer-arith -Wswitch
 CFLAGS += -Wredundant-decls -Wreturn-type -Wshadow -Wunused
 CFLAGS += -Wa,-adhlns=$(BUILDDIR)/$(subst $(suffix $<),.lst,$<)
 CFLAGS += $(patsubst %,-I%,$(INCDIRS))
-ifndef PLATFORM
-PLATFORM = MAPLE
+ifndef Platform
+Platform = MAPLE
 endif
-CFLAGS += -D$(PLATFORM)
+CFLAGS += -D$(Platform)
 
 # Aeembler Flags
 ASFLAGS = -Wa,-adhlns=$(BUILDDIR)/$(<:.s=.lst)#,--g$(DEBUG)
