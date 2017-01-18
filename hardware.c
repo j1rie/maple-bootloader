@@ -217,7 +217,6 @@ void jumpToUser(u32 usrAddr) {
     flashLock();
     usbDsbISR();
     nvicDisableInterrupts();
-
 #ifndef NO_USB_DISC
     setPin(USB_DISC_BANK, USB_DISC); // disconnect usb from host
 #endif
