@@ -34,6 +34,7 @@
 #include "dfu.h"
 
 void setupUSB(void) {
+#ifndef NO_USB_DISC
     u32 rwmVal; /* read-write-modify place holder var */
 
     /* Setup APB2 for USB disconnect GPIO bank */
@@ -50,9 +51,6 @@ void setupUSB(void) {
 #endif
 
     /* preset pin to high */
-#ifndef PullDown
-    setPin(USB_DISC_BANK, USB_DISC);
-#endif
 
     /* Setup GPIO Pin as OD out */
     rwmVal  = GET_REG(USB_DISC_GPIO_CR);
@@ -60,13 +58,12 @@ void setupUSB(void) {
     rwmVal |= (0x5 << (USB_DISC_CR_PORT * 4));
     SET_REG(USB_DISC_GPIO_CR, rwmVal);
 
+#endif
     /* enable USB clock */
     pRCC->APB1ENR |= RCC_APB1ENR_USB;
 
     /* initialize the usb application */
-#ifdef PullDown
-    setPin(USB_DISC_BANK, USB_DISC);  /* present ourselves to the host */
-#else
+#ifndef NO_USB_DISC
     resetPin(USB_DISC_BANK, USB_DISC);  /* present ourselves to the host */
 #endif
     usbAppInit();

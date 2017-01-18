@@ -217,9 +217,8 @@ void jumpToUser(u32 usrAddr) {
     flashLock();
     usbDsbISR();
     nvicDisableInterrupts();
-#ifdef PullDown
-    resetPin(USB_DISC_BANK, USB_DISC); // disconnect usb from host
-#else
+
+#ifndef NO_USB_DISC
     setPin(USB_DISC_BANK, USB_DISC); // disconnect usb from host
 #endif
     systemReset(); // resets clocks and periphs, not core regs

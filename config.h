@@ -70,7 +70,7 @@
 # define LED2_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define LED2      14
 # define REMAP
-# define PullDown
+# define NO_USB_DISC
 # define LEDx2
 # define NoButton
 # define USB_DISC_BANK GPIOB
@@ -82,7 +82,7 @@
 # define LED_BANK GPIOB
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      13
-# define PullDown
+# define NO_USB_DISC
 # define NoButton
 # define USB_DISC_BANK GPIOB
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
@@ -97,7 +97,7 @@
 # define LED2_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED2      13
 # define REMAP
-# define PullDown
+# define NO_USB_DISC
 # define LEDx2
 # define NoButton
 # define USB_DISC_BANK GPIOA
