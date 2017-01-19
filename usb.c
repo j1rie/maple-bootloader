@@ -51,6 +51,7 @@ void setupUSB(void) {
 #endif
 
     /* preset pin to high */
+    setPin(USB_DISC_BANK, USB_DISC);
 
     /* Setup GPIO Pin as OD out */
     rwmVal  = GET_REG(USB_DISC_GPIO_CR);

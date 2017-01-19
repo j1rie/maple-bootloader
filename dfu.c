@@ -398,14 +398,8 @@ void dfuFinishUpload() {
             if (code_copy_lock == BEGINNING) {
                 code_copy_lock = MIDDLE;
                 strobePin(LED_BANK, LED, 2, 0x1000);
-#ifdef LEDx2
-                strobePin(LED2_BANK, LED2, 2, 0x1000);                
-#endif
                 dfuCopyBufferToExec();
                 strobePin(LED_BANK, LED, 2, 0x500);
-#ifdef LEDx2
-                strobePin(LED2_BANK, LED2, 2, 0x500);                
-#endif
                 code_copy_lock = END;
             }
         }
