@@ -96,6 +96,14 @@
 //# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 //# define USB_DISC      13
 
+#elif defined blueDev
+
+# define LED_BANK GPIOC
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
+# define LED      13
+# define NO_USB_DISC
+# define NoButton
+
 #else
 # error "Unknown platform"
 #endif
