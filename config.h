@@ -53,9 +53,11 @@
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      1
 
-# define BUTTON_BANK GPIOB
-# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
-# define BUTTON      8
+# define NoButton
+# define UCF5k
+//# define BUTTON_BANK GPIOB
+//# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+//# define BUTTON      8
 
 # define USB_DISC_BANK GPIOB
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
@@ -101,6 +103,14 @@
 # define LED_BANK GPIOC
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
 # define LED      13
+# define NO_USB_DISC
+# define NoButton
+
+#elif defined blackDev
+
+# define LED_BANK GPIOB
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define LED      12
 # define NO_USB_DISC
 # define NoButton
 
