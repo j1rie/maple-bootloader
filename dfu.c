@@ -392,7 +392,13 @@ bool dfuUploadStarted() {
     return dfuBusy;
 }
 
-void dfuFinishUpload() {
+bool dfuUploadDone()
+{
+    return (dfuAppStatus.bState == dfuMANIFEST_WAIT_RESET
+        &&  dfuAppStatus.bStatus == OK) ? TRUE : FALSE;
+}
+
+bool dfuFinishUpload() {
     while (1) {
         if (userFlash) {
             if (code_copy_lock == BEGINNING) {
@@ -403,7 +409,10 @@ void dfuFinishUpload() {
                 code_copy_lock = END;
             }
         }
-        /* otherwise do nothing, dfu state machine resets itself */
+
+	if (dfuUploadDone()) {
+	    return TRUE;
+	}
     }
 }
 

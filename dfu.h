@@ -115,7 +115,8 @@ bool checkTestFile(void);
 u8 dfuGetState(void);
 void dfuSetState(u8);
 bool dfuUploadStarted();
-void dfuFinishUpload();
+bool dfuUploadDone();
+bool dfuFinishUpload();
 
 
 #endif
