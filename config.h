@@ -33,21 +33,23 @@
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
-#ifdef MAPLE
+#ifdef Maple
 
 # define LED_BANK GPIOA
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define LED      5
 
-# define BUTTON_BANK GPIOC
-# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
-# define BUTTON      9
+# define NoButton
+# define UCF5k
+//# define BUTTON_BANK GPIOC
+//# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
+//# define BUTTON      9
 
 # define USB_DISC_BANK GPIOC
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
 # define USB_DISC      12
 
-#elif defined MAPLE_MINI
+#elif defined MapleMini
 
 # define LED_BANK GPIOB
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB

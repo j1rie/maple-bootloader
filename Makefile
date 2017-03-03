@@ -36,7 +36,7 @@ CFLAGS += -Wredundant-decls -Wreturn-type -Wshadow -Wunused
 CFLAGS += -Wa,-adhlns=$(BUILDDIR)/$(subst $(suffix $<),.lst,$<)
 CFLAGS += $(patsubst %,-I%,$(INCDIRS))
 ifndef Platform
-Platform = MAPLE
+Platform = Maple
 endif
 CFLAGS += -D$(Platform)
 
