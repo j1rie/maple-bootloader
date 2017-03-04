@@ -39,11 +39,11 @@
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define LED      5
 
-# define NoButton
+//# define NoButton
 # define UCF5k
-//# define BUTTON_BANK GPIOC
-//# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
-//# define BUTTON      9
+# define BUTTON_BANK GPIOC
+# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
+# define BUTTON      9
 
 # define USB_DISC_BANK GPIOC
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
@@ -55,11 +55,11 @@
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      1
 
-# define NoButton
+//# define NoButton
 # define UCF5k
-//# define BUTTON_BANK GPIOB
-//# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
-//# define BUTTON      8
+# define BUTTON_BANK GPIOB
+# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define BUTTON      8
 
 # define USB_DISC_BANK GPIOB
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
