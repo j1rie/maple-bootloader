@@ -19,4 +19,7 @@ make clean
 make -j3 Platform=Blue
 cp ./build/maple_boot.bin ./binaries/boot.Blue.bin
 make clean
+make -j3 Platform=Stick
+cp ./build/maple_boot.bin ./binaries/boot.Stick.bin
+make clean
 rm -d .dep build/stm32_lib build/usb_lib build

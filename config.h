@@ -100,6 +100,14 @@
 //# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 //# define USB_DISC      13
 
+#elif defined Stick
+
+# define LED_BANK GPIOA
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define LED      9
+# define NO_USB_DISC
+# define NoButton
+
 #elif defined blueDev
 
 # define LED_BANK GPIOC
