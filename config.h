@@ -65,6 +65,22 @@
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define USB_DISC      9
 
+#elif defined MapleMini_2k
+
+# define LED_BANK GPIOB
+# define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define LED      1
+
+//# define NoButton
+# define BUTTON_BANK GPIOB
+# define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define BUTTON      8
+
+# define USB_DISC_BANK GPIOB
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
+# define USB_DISC      9
+
+
 #elif defined Blue
 
 # define LED_BANK GPIOA

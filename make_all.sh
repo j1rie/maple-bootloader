@@ -4,6 +4,9 @@ make clean
 make -j3 Platform=MapleMini
 cp ./build/maple_boot.bin ./binaries/boot.MapleMini.bin
 make clean
+make -j3 Platform=MapleMini_2k
+cp ./build/maple_boot.bin ./binaries/boot.MapleMini_2k.bin
+make clean
 make -j3 Platform=Dev
 cp ./build/maple_boot.bin ./binaries/boot.Dev.bin
 make clean
