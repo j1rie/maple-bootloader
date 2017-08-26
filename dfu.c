@@ -415,4 +415,3 @@ bool dfuFinishUpload() {
 	}
     }
 }
-
