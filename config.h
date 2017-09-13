@@ -33,13 +33,14 @@
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
+
 #ifdef Maple
 
 # define LED_BANK GPIOA
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define LED      5
 
-//# define NoButton
+# define NoButton
 # define UCF5k
 # define BUTTON_BANK GPIOC
 # define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
@@ -55,7 +56,7 @@
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      1
 
-//# define NoButton
+# define NoButton
 # define UCF5k
 # define BUTTON_BANK GPIOB
 # define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
@@ -71,7 +72,7 @@
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      1
 
-//# define NoButton
+# define NoButton
 # define BUTTON_BANK GPIOB
 # define BUTTON_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define BUTTON      8
@@ -86,35 +87,28 @@
 # define LED_BANK GPIOA
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define LED      9
-//# define REMAP
 # define NO_USB_DISC
 # define NoButton
-//# define USB_DISC_BANK GPIOB
-//# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
-//# define USB_DISC      13
 
 #elif defined Dev
 
 # define LED_BANK GPIOB
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      13
-# define NO_USB_DISC
+# define NO_USB_DISC_HW
 # define NoButton
-//# define USB_DISC_BANK GPIOB
-//# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
-//# define USB_DISC      15
+# define USB_DISC_BANK GPIOA
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define USB_DISC      12
+
 
 #elif defined Red
 
 # define LED_BANK GPIOA
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define LED      9
-//# define REMAP
 # define NO_USB_DISC
 # define NoButton
-//# define USB_DISC_BANK GPIOA
-//# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
-//# define USB_DISC      13
 
 #elif defined Stick
 
@@ -129,16 +123,24 @@
 # define LED_BANK GPIOC
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOC
 # define LED      13
-# define NO_USB_DISC
+# define NO_USB_DISC_HW
 # define NoButton
+# define USB_DISC_BANK GPIOA
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define USB_DISC      12
+
 
 #elif defined blackDev
 
 # define LED_BANK GPIOB
 # define LED_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOB
 # define LED      12
-# define NO_USB_DISC
+# define NO_USB_DISC_HW
 # define NoButton
+# define USB_DISC_BANK GPIOA
+# define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
+# define USB_DISC      12
+
 
 #else
 # error "Unknown platform"

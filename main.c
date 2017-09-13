@@ -42,7 +42,7 @@ int main() {
 #ifndef NoButton
     setupBUTTON();
 
-    //strobePin(LED_BANK, LED, STARTUP_BLINKS, BLINK_FAST);
+    strobePin(LED_BANK, LED, STARTUP_BLINKS, BLINK_FAST);
 
     /* wait for host to upload program or halt bootloader */
     bool no_user_jump = !checkUserCode(USER_CODE_FLASH) && !checkUserCode(USER_CODE_RAM) || readPin(BUTTON_BANK, BUTTON);
@@ -57,8 +57,10 @@ int main() {
         strobePin(LED_BANK, LED, 1, BLINK_SLOW);
 
         if (dfuUploadStarted()) {
-	    if (dfuFinishUpload())
+	    if (dfuFinishUpload()) {
+		strobePin(LED_BANK, LED, 3, 0x500);
 		break;
+	    }
         }
     }
 

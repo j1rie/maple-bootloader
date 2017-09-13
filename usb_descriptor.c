@@ -66,7 +66,7 @@ u8 u8_usbFunctionalDescriptor[9] = {
     /******************** DFU Functional Descriptor********************/
     0x09,   /*blength = 7 Bytes*/
     0x21,   /* DFU Functional Descriptor*/
-    0x03,   /*bmAttributes, bitCanDnload | bitCanUpload */
+    0x0B,   /*bmAttributes, bitCanDnload | bitCanUpload | bitWillDetach */
     0xFF,   /*DetachTimeOut= 255 ms*/
     0x00,
     (wTransferSize & 0x00FF),

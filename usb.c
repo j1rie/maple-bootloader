@@ -49,16 +49,21 @@ void setupUSB(void) {
 # define USB_DISC_GPIO_CR GPIO_CRH(USB_DISC_BANK)
 # define USB_DISC_CR_PORT (USB_DISC - 8)
 #endif
-
+#ifndef NO_USB_DISC_HW
     /* preset pin to high */
     setPin(USB_DISC_BANK, USB_DISC);
-
+#else
+    resetPin(USB_DISC_BANK, USB_DISC);
+#endif
     /* Setup GPIO Pin as OD out */
     rwmVal  = GET_REG(USB_DISC_GPIO_CR);
     rwmVal &= ~(0xF << (USB_DISC_CR_PORT * 4));
     rwmVal |= (0x5 << (USB_DISC_CR_PORT * 4));
     SET_REG(USB_DISC_GPIO_CR, rwmVal);
-
+#ifdef NO_USB_DISC_HW
+    vu32 delay;
+    for(delay=1080000;delay;delay--);
+#endif
 #endif
     /* enable USB clock */
     pRCC->APB1ENR |= RCC_APB1ENR_USB;
