@@ -33,7 +33,6 @@
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
-
 #ifdef Maple
 
 # define LED_BANK GPIOA
@@ -101,7 +100,6 @@
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define USB_DISC      12
 
-
 #elif defined Red
 
 # define LED_BANK GPIOA
@@ -129,7 +127,6 @@
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define USB_DISC      12
 
-
 #elif defined blackDev
 
 # define LED_BANK GPIOB
@@ -140,7 +137,6 @@
 # define USB_DISC_BANK GPIOA
 # define USB_DISC_RCC_APB2ENR_GPIO RCC_APB2ENR_GPIOA
 # define USB_DISC      12
-
 
 #else
 # error "Unknown platform"
